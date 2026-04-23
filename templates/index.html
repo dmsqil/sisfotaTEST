@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Klasifikasi Tugas Akhir</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 140px;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 18px;
+            border: none;
+            background: #4a7be0;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #365fc7;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9f3ff;
+            border-left: 5px solid #4a7be0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Data Tugas Akhir</h2>
+
+    <form method="POST">
+        <label>NIM</label>
+        <input type="text" name="nim" value="{{ form_data.nim }}">
+
+        <label>Nama Mahasiswa</label>
+        <input type="text" name="nama" value="{{ form_data.nama }}">
+
+        <label>Judul Tugas Akhir</label>
+        <input type="text" name="judul" required value="{{ form_data.judul }}">
+
+        <label>Abstrak</label>
+        <textarea name="abstrak" required>{{ form_data.abstrak }}</textarea>
+
+        <button type="submit" class="btn">Prediksi</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <strong>Hasil Klasifikasi:</strong><br>
+        {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
